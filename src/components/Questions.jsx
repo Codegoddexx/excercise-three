@@ -16,7 +16,7 @@ setFaqList(newList)
     <div>
         <p onClick={()=> {
             showAnswer(text)
-        }}> {text }</p>
+        }}> {clicked ? "lala" : text}</p>
         {
             clicked ? 
             <p>{ans}</p> : null
