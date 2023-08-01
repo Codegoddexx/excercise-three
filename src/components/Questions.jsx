@@ -1,21 +1,28 @@
+/* eslint-disable react/prop-types */
 const Questions = (props) => {
-const {text, ans, clicked, faqList, setFaqList} = props
+const {text, ans, clicked, faqList, setFaqList, id} = props
 
 function showAnswer(id) {
     const newList = faqList.map((faq) => {
-        if(faq.text === id ) {
+        if(faq.id === id ) {
             return {...faq, clicked:(clicked ? false :true)}
         }else{
             return {...faq}
         }
     })
-setFaqList(newList)
+const pickedQuestion = faqList.filter((faq)=> {
+    return faq.id === id
+})
+
+const NewQuestion = [...newList, ...pickedQuestion]
+    
+setFaqList(NewQuestion)
 }
 
   return (
     <div>
         <p onClick={()=> {
-            showAnswer(text)
+            showAnswer(id)
         }}> {clicked ? "lala" : text}</p>
         {
             clicked ? 
